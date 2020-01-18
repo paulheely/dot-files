@@ -1,3 +1,15 @@
+" Use minpac for package management
+packadd minpac
+call minpac#init()
+
+" minpac packages, including itself
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+" minpac commands
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
+
+
 syntax on
 set number
 set tabstop=2
