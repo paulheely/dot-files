@@ -24,3 +24,15 @@ Much harder than adding....
     Run git rm --cached path_to_submodule (no trailing slash).
     Commit the superproject.
     Delete the now untracked submodule files. 
+
+## Using minpac
+
+NB: the vim/.vim/pack/minpac dir is ignored by git.
+
+To Install and get started:
+
+    mkdir -p ~/.vim/pack/minpac/opt
+    cd ~/.vim/pack/minpac/opt
+    git clone https://github.com/k-takata/minpac.git
+
+
