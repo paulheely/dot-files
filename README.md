@@ -10,3 +10,8 @@ Install the stow package. On Os X
 For each directory to link into ~ run
     stow -v -R -t ~ <DIR>
 
+Or run the setup.sh script.
+
+## Adding packages via git submodules example
+    git submodule add https://github.com/tpope/vim-unimpaired.git vim/.vim/pack/bundle/start/vim-unimpaired
+
