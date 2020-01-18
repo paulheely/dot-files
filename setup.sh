@@ -5,10 +5,10 @@ git submodule init
 git submodule update
 
 # Run stow to setup dot-files and scripts
-stow -v -R -t ~ bash
-stow -v -R -t ~ bin
-stow -v -R -t ~ git
-stow -v -R -t ~ neovim
-stow -v -R -t ~ vim
-stow -v -R -t ~ emacs
+stow --dotfiles -v -R -t ~ bash
+stow --dotfiles -v -R -t ~ bin
+stow --dotfiles -v -R -t ~ git
+stow --dotfiles -v -R -t ~ neovim
+stow --dotfiles -v -R -t ~ vim
+stow --dotfiles -v -R -t ~ emacs
 
