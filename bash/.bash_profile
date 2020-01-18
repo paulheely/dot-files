@@ -9,6 +9,10 @@ alias ls="ls -F"
 alias vim=nvim
 alias vi=nvim
 
+# Make FZF in (N)Vim use ripgrep -- brew install ripgrep
+export FZF_DEFAULT_COMMAND='rg --files'
+
+
 # Some convenient aliases for quickly getting to my stuff
 export CURRENT_YEAR=2020
 alias cda="cd ~/Documents/Docs/_Archive/${CURRENT_YEAR}"
