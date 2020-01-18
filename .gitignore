@@ -2,4 +2,7 @@ vim/.vim/pack/minpac
 neovim/.config/configstore/
 
 # Emacs Stuff
+emacs/.emacs.d/init.elc
+emacs/.emacs.d/elpa/
+
 
