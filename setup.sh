@@ -10,5 +10,4 @@ stow --dotfiles -v -R -t ~ bin
 stow --dotfiles -v -R -t ~ git
 stow --dotfiles -v -R -t ~ neovim
 stow --dotfiles -v -R -t ~ vim
-stow --dotfiles -v -R -t ~ emacs
 
