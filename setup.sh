@@ -10,3 +10,5 @@ stow -v -R -t ~ bin
 stow -v -R -t ~ git
 stow -v -R -t ~ neovim
 stow -v -R -t ~ vim
+stow -v -R -t ~ emacs
+
