@@ -1,0 +1,3 @@
+[submodule "vim/.vim/pack/bundle/start/vim-unimpaired"]
+	path = vim/.vim/pack/bundle/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
