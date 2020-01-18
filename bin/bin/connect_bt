@@ -1,0 +1,21 @@
+#!/bin/bash
+UTIL=/usr/local/bin/blueutil
+echo UTIL $UTIL > /tmp/connect_bt.log
+
+bose_id=$($UTIL --paired | grep "Bose QC35 II" | cut -d' ' -f2 | cut -d',' -f1)
+senn_id=$($UTIL --paired | grep "Sennheiser MB Pro 2" | cut -d' ' -f2 | cut -d',' -f1)
+
+echo bose_id $bose_id >> /tmp/connect_bt.log
+echo senn_id $senn_id >> /tmp/connect_bt.log
+
+if [ x$1 == "xbose" ]; then
+    $UTIL --disconnect $senn_id >> /tmp/connect_bt.log
+    $UTIL --disconnect $bose_id >> /tmp/connect_bt.log
+    $UTIL --connect $bose_id >> /tmp/connect_bt.log
+elif [ x$1 == "xsenn" ]; then
+    $UTIL --disconnect $bose_id >> /tmp/connect_bt.log
+    $UTIL --disconnect $senn_id >> /tmp/connect_bt.log
+    $UTIL --connect $senn_id >> /tmp/connect_bt.log
+else
+    echo "Usage: $0 <bose|senn>" >> /tmp/connect_bt.log
+fi
