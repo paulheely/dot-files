@@ -4,4 +4,6 @@ neovim/dot-config/configstore/
 emacs/dot-emacs.d/generated-elisp
 emacs/dot-emacs.d/autosaves
 emacs/dot-emacs.d/auto-save-list
+emacs/dot-emacs.d/private.el
+emacs/dot-emacs.d/elpa
 
