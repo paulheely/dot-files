@@ -35,4 +35,8 @@ To Install and get started:
     cd ~/.vim/pack/minpac/opt
     git clone https://github.com/k-takata/minpac.git
 
+## Emacs Notes:
+
+The emacs files have an addional step to compile the .org files. See the build.el file in dot-emacs.d
+
 
