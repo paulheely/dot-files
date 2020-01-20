@@ -2,6 +2,6 @@ vim/dot-vim/pack/minpac
 neovim/dot-config/configstore/
 
 emacs/dot-emacs.d/generated-elisp
-emacs/dot-emacs.d/backups
+emacs/dot-emacs.d/autosaves
 emacs/dot-emacs.d/auto-save-list
 
