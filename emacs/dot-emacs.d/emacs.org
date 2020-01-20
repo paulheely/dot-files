@@ -3,55 +3,14 @@
 
 
 * Introduction
+  This is my attempt at using a literate style to keep my =.emacs= in order.
 
-  This is my =.emacs= file ... well, the top-level of it anyway.
-  I've written it in a [[http://www.orgmode.org][literate style]], to make it easy to explain.
-  The notes also include hyperlinks to where I stole it. ;-)
+** Credit
+   The basis of the split emacs config files from Howard Abrams, https://github.com/howardabrams/dot-files
 
-** Emacs Executable
-
-   While I often use [[http://emacsformacosx.com/builds][Emacs for Mac]], lately, I've been building Emacs
-   from source using [[http://brew.sh/][Homebrew]]. I start by adding the following dependency:
-
-   #+BEGIN_SRC shell
-     brew cask install xquartz
-   #+END_SRC
-
-   *Note:* I've been running into an issue where I want Emacs to display
-   ligatures as well as work with the visual regular expression
-   package.  To get the both to work, I find I need to build from
-   source after applying [[https://github.com/minimal/emacs/commit/812dd5119645a09bc025a9dddedad9474d12ecb6][this patch]]. According to the Homebrew
-   documentation (see [[https://github.com/Homebrew/brew/blob/master/share/doc/homebrew/Formula-Cookbook.md#patches][the Patches section]]), we first:
-
-   #+BEGIN_SRC shell
-     brew edit emacs
-   #+END_SRC
-
-   And add the following section
-
-   #+BEGIN_EXAMPLE
-   patch do
-     url "https://github.com/minimal/emacs/commit/812dd5119645a09bc025a9dddedad9474d12ecb6.diff"
-   end
-   #+END_EXAMPLE
-
-   And then build from source especially for the Mac:
-
-   #+BEGIN_SRC shell
-     brew install emacs --HEAD --use-git-head --with-cocoa --with-gnutls --with-librsvg --with-ns --with-imagemagick
-
-     brew linkapps emacs
-   #+END_SRC
-
-   Not only does this install the latest version of Emacs in
-   =/usr/local/bin/emacs=, but it also links a GUI version in
-   =/Application/Emacs.app=.
-
-   All Homebrew options for Emacs can be seen with the command:
-
-   #+BEGIN_SRC shell
-     brew options emacs
-   #+END_SRC
+   Additional ideas stolen from:
+   - https://github.com/larstvei/dot-emacs
+   - http://doc.norang.ca/org-mode.html
 
 ** Loading this File
 
@@ -61,62 +20,55 @@
      ;; Load our Literate Programming version of our Dot Emacs
      ;; file, from file: ~/Work/dot-files/emacs.org
      (unless (boundp 'aquamacs-version)
-       (load-file "~/.emacs.d/elisp/init-main.el")
+       (load-file "~/.emacs.d/generated-elisp/init-main.el")
        (server-start))
    #+END_SRC
 
-   I only load this from a "normal" Emacs distribution, which
-   allows me to play around with [[http://aquamacs.org/][Aquamacs]] and [[http://eschulte.github.io/emacs-starter-kit/][Starter Kits]].
-   You know, to see what I may be missing.
-
 * General Settings
-** My Directory Location
 
-   Normally, the =user-emacs-directory= stores everything in a
-   =.emacs.d= directory in the home directory, however, Aquamacs
-   overrides that, and since I now feel the need to use these settings
-   for both editors (sure feels like XEmacs all over again).
-
-   Any way, I have a new global variable for that:
-
+** Autosaves & Backup Files
+   To reduce noise, put autosaves and backups into a single directory
    #+BEGIN_SRC elisp
-     (defconst ha/emacs-directory (concat (getenv "HOME") "/.emacs.d/"))
-
-     (defun ha/emacs-subdirectory (d) (expand-file-name d ha/emacs-directory))
+   (defvar emacs-autosave-directory
+     (concat user-emacs-directory "autosaves/")
+     "This variable dictates where to put auto saves. It is set to a
+     directory called autosaves located wherever your .emacs.d/ is
+     located.")
    #+END_SRC
 
-** Directory Structure
-
-   In case this is the first time running this on a computer, we need
-   to make sure the following directories have been created.
+   Create the autosaves directory if it does not exist
 
    #+BEGIN_SRC elisp
-     (let* ((subdirs '("elisp" "backups"))
-            (fulldirs (mapcar (lambda (d) (ha/emacs-subdirectory d)) subdirs)))
-       (dolist (dir fulldirs)
-         (when (not (file-exists-p dir))
-           (message "Make directory: %s" dir)
-           (make-directory dir))))
+   (when (not (file-exists-p emacs-autosave-directory))
+     (message "Make directory: %s" emacs-autosave-directory)
+     (make-directory emacs-autosave-directory))
    #+END_SRC
+   
 
-** Customization Section
-
-   While I would rather program my configurations, sometimes the Emacs
-   menu system is "good enough", but I want it in its own file:
+   Sets all files to be backed up and auto saved in a single directory.
 
    #+BEGIN_SRC elisp
-     (setq custom-file (expand-file-name "custom.el" ha/emacs-directory))
-     (when (file-exists-p custom-file)
-       (load custom-file))
+   (setq backup-directory-alist
+         `((".*" . ,emacs-autosave-directory))
+         auto-save-file-name-transforms
+         `((".*" ,emacs-autosave-directory t)))
    #+END_SRC
+
+** Emacs customizations
+   Save customizaitons made through Emacs into their own file
+   #+BEGIN_SRC elisp
+   (setq custom-file (concat user-emacs-directory "custom.el"))
+   (when (file-exists-p custom-file)
+     (load custom-file))
+   #+END_SRC
+
 
 ** Setting up the Load Path
-
-   Extra packages not available via the package manager go in my
-   personal stash at: =$HOME/.emacs.d/elisp=
+   Split elisp that is checked-in from the generated stuff.
 
    #+BEGIN_SRC elisp
-     (add-to-list 'load-path (ha/emacs-subdirectory "elisp"))
+     (add-to-list 'load-path (concat user-emacs-directory "elisp"))
+     (add-to-list 'load-path (concat user-emacs-directory "generated-elisp"))
    #+END_SRC
 
 ** Modernizing Emacs
@@ -137,24 +89,7 @@
    #+END_SRC
 
 
-
-
 * Technical Artifacts
-
-** Setting up the Exec Path
-
-   Make sure that =PATH= variable for finding binary files can is the
-   same as what Emacs will look for binary files. This little magic,
-   starts up a shell, gets its path, and then uses that for the
-   =exec-path=:
-
-   #+BEGIN_SRC elisp
-     (when window-system
-       (let ((path-from-shell (shell-command-to-string "/bin/bash -l -c 'echo $PATH'")))
-         (setenv "PATH" path-from-shell)
-         (setq exec-path (split-string path-from-shell path-separator))))
-   #+END_SRC
-
 ** Configure the Graphical Settings
 
    If we are running in a windowed environment where we can set up
@@ -177,12 +112,6 @@
      (require 'init-local nil t)
    #+END_SRC
 
-   Finally, let's get happy:
-
-   #+BEGIN_SRC elisp :tangle no
-     (defun display-startup-echo-area-message ()
-       (ha/cookie))
-   #+END_SRC
 
    After the first load, we can reload this with a require:
 
