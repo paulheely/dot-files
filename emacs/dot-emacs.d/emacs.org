@@ -117,7 +117,32 @@
    #+END_SRC
 
 ** Modes
+   Turn some stuff off
    
+   #+BEGIN_SRC elisp
+     (dolist (mode 
+               '(tool-bar-mode
+                 scroll-bar-mode
+                 blink-cursor-mode))
+       (funcall mode 0))
+   #+END_SRC
+
+   Turn some stuff on
+   
+   #+BEGIN_SRC elisp
+     (dolist (mode 
+               '(column-number-mode
+                 delete-selection-mode
+                 show-paren-mode))
+       (funcall mode 1))
+   #+END_SRC
+
+* Visual
+  Change to leuven theme
+  
+  #+BEGIN_SRC elisp :tangle no
+    (load-theme 'leuven t)
+  #+END_SRC
 
 * Package Control
 ** Package Manager
@@ -128,7 +153,8 @@
      (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
      
      (package-initialize)
-     (package-refresh-contents)
+     ;; run manually when needed, doing at startup slows down the show too much
+     ;; (package-refresh-contents)
    #+END_SRC
 
 ** Use-Package
@@ -140,6 +166,12 @@
        (package-install 'use-package))
      
      (require 'use-package)
+   #+END_SRC
+
+* File Editing
+** Yaml
+   #+BEGIN_SRC elisp
+     (require 'init-yaml)
    #+END_SRC
 
 * Technical Artifacts
