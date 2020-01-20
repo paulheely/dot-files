@@ -140,7 +140,7 @@
 * Visual
   Change to leuven theme
   
-  #+BEGIN_SRC elisp :tangle no
+  #+BEGIN_SRC elisp
     (load-theme 'leuven t)
   #+END_SRC
 
@@ -172,6 +172,11 @@
 ** Yaml
    #+BEGIN_SRC elisp
      (require 'init-yaml)
+   #+END_SRC
+
+** Markdown
+   #+BEGIN_SRC elisp
+     (require 'init-markdown)
    #+END_SRC
 
 * Technical Artifacts
