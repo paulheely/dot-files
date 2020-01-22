@@ -24,6 +24,38 @@
        (server-start))
    #+END_SRC
 
+* Visual
+  Change to leuven theme
+  
+  #+BEGIN_SRC elisp
+    (load-theme 'leuven t)
+  #+END_SRC
+
+* Package Control
+** Package Manager
+   Load some additional repos to pull packages from
+   #+BEGIN_SRC elisp
+     (require 'package)
+     (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+     (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+     
+     (package-initialize)
+     ;; run manually when needed, doing at startup slows down the show too much
+     ;; (package-refresh-contents)
+   #+END_SRC
+
+** Use-Package
+   =use-package= makes it easy to install and lazy load other packages
+   
+   #+BEGIN_SRC elisp
+     (unless (package-installed-p 'use-package)
+       (package-refresh-contents)
+       (package-install 'use-package))
+     
+     (require 'use-package)
+   #+END_SRC
+
 * General Settings
 ** Autosaves & Backup Files
    To reduce noise, put autosaves and backups into a single directory
@@ -137,37 +169,15 @@
        (funcall mode 1))
    #+END_SRC
 
-* Visual
-  Change to leuven theme
-  
-  #+BEGIN_SRC elisp
-    (load-theme 'leuven t)
-  #+END_SRC
-
-* Package Control
-** Package Manager
-   Load some additional repos to pull packages from
-   #+BEGIN_SRC elisp
-     (require 'package)
-     (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-     (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-     
-     (package-initialize)
-     ;; run manually when needed, doing at startup slows down the show too much
-     ;; (package-refresh-contents)
-   #+END_SRC
-
-** Use-Package
-   =use-package= makes it easy to install and lazy load other packages
+** Shell Execution Path
+   When on Mac pull in my correct path so external commands work
    
    #+BEGIN_SRC elisp
-     (unless (package-installed-p 'use-package)
-       (package-refresh-contents)
-       (package-install 'use-package))
-     
-     (require 'use-package)
+     (use-package exec-path-from-shell)
+   
+     (when (memq window-system '(mac ns x))
+       (exec-path-from-shell-initialize))
    #+END_SRC
-
 * File Editing
 ** Yaml
    #+BEGIN_SRC elisp
@@ -177,6 +187,17 @@
 ** Markdown
    #+BEGIN_SRC elisp
      (require 'init-markdown)
+   #+END_SRC
+
+** Python
+   #+BEGIN_SRC elisp
+     (require 'init-python)
+   #+END_SRC
+
+* File Conversion
+** Pandoc Exporter
+   #+BEGIN_SRC elisp
+     (require 'init-pandoc-export)
    #+END_SRC
 
 * Technical Artifacts

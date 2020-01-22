@@ -1,0 +1,42 @@
+#+TITLE:  Emacs Configuration For Python Programming
+#+AUTHOR: Paul Heely
+
+
+* Python Settings
+  My setup for Python programming
+
+* Virtial Environments
+  On OSX to setup for virtual environments
+ 
+  #+BEGIN_SRC shell
+    brew install pyenv pyenv-virtualenv pyenv-virtualenvwrapper
+    pip3 install virtualenv
+  #+END_SRC
+  
+  
+* Package Settings
+  #+BEGIN_SRC elisp
+    (use-package python
+      :mode ("\\.py\\'" . python-mode)
+      :interpreter ("python3" . python-mode)
+      
+      :init (setq-default indent-tabs-mode nil)
+      
+      :config
+        (setq python-indent-offset 4)
+        (add-hook 'python-mode-hook 'smartparens-mode)
+        (add-hook 'python-mode-hook 'color-identifiers-mode))
+  #+END_SRC
+  
+* Technical Artifacts
+   #+BEGIN_SRC elisp
+     (provide 'init-python)
+   #+END_SRC
+
+#+DESCRIPTION: A literate programming version of my Emacs Initialization script, loaded by the .emacs file.
+#+PROPERTY:    header-args:elisp  :tangle ~/.emacs.d/generated-elisp/init-python.el
+#+PROPERTY:    header-args:shell  :tangle no
+#+PROPERTY:    header-args        :results silent   :eval no-export   :comments org
+#+OPTIONS:     num:nil toc:nil todo:nil tasks:nil tags:nil
+#+OPTIONS:     skip:nil author:nil email:nil creator:nil timestamp:nil
+#+INFOJS_OPT:  view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
