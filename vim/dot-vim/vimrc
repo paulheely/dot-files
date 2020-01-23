@@ -1,16 +1,33 @@
+set nocompatible
+
+filetype off
+
 " Use minpac for package management
 packadd minpac
 call minpac#init()
 
-" minpac packages, including itself
+" minpac packages, including itself so it can be updated
 call minpac#add('k-takata/minpac', {'type': 'opt'})
-call minpac#add('junegunn/fzf') " Need to also install fzf command
+
+" use fzf for search, reauires external tools fzf and ripgrep
+call minpac#add('junegunn/fzf')
+
+" make sense of our todo.txt todos
 call minpac#add('freitass/todo.txt-vim')
+
+" make a nice modeline and git config
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('tpope/vim-fugitive')
-call minpac#add('prettier/vim-prettier')
-call minpac#add('caksoylar/vim-mysticaltutor')
 call minpac#add('mhinz/vim-signify')
+
+" reformatting is a good thing
+call minpac#add('prettier/vim-prettier')
+
+" color scheme
+call minpac#add('caksoylar/vim-mysticaltutor')
+
+" get some automated bullet (re)numbering in various modes
+call minpac#add('dkarter/bullets.vim')
 
 
 " minpac commands
@@ -27,8 +44,8 @@ set tabstop=2
 set expandtab
 set termguicolors
 
-syntax enable
-filetype plugin on
+syntax on
+filetype plugin indent on
 set termguicolors
 colorscheme mysticaltutor
 hi Normal ctermbg=none
@@ -37,22 +54,10 @@ hi Terminal guibg=none
 hi Normal guibg=none
 
 
-" Set the title of the Terminal to the currently open file
-function! SetTerminalTitle()
-    let titleString = expand('%:t')
-    if len(titleString) > 0
-        let &titlestring = expand('%:t')
-        " this is the format iTerm2 expects when setting the window title
-        let args = "\033];".&titlestring."\007"
-        let cmd = 'silent !echo -e "'.args.'"'
-        execute cmd
-        redraw!
-    endif
-endfunction
-
-autocmd BufEnter * call SetTerminalTitle()
 
 " Compile the markdown file to a word doc
+" tried putting this in after/ftplugin/markdown.vim, but neovim won't load it
+" reliably
 autocmd FileType markdown nnoremap <buffer><silent><localleader>b :!pandoc % -o ~/Documents/Docs/_Inbox/%:r.docx<CR>
 
 
