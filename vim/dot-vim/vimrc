@@ -6,6 +6,11 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('junegunn/fzf') " Need to also install fzf command
 call minpac#add('freitass/todo.txt-vim')
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('prettier/vim-prettier')
+call minpac#add('caksoylar/vim-mysticaltutor')
+call minpac#add('mhinz/vim-signify')
 
 
 " minpac commands
@@ -17,12 +22,19 @@ nnoremap <C-p> :<C-u>FZF<CR>
 
 
 
-syntax on
 set number
 set tabstop=2
 set expandtab
+set termguicolors
 
-
+syntax enable
+filetype plugin on
+set termguicolors
+colorscheme mysticaltutor
+hi Normal ctermbg=none
+hi Terminal ctermbg=none
+hi Terminal guibg=none
+hi Normal guibg=none
 
 
 " Set the title of the Terminal to the currently open file
@@ -41,6 +53,6 @@ endfunction
 autocmd BufEnter * call SetTerminalTitle()
 
 " Compile the markdown file to a word doc
-autocmd FileType markdown nnoremap <buffer><silent><localleader>b :!pandoc % -o ~/Documents/Docs/_Inbox/%:r.docx<CR><CR>
+autocmd FileType markdown nnoremap <buffer><silent><localleader>b :!pandoc % -o ~/Documents/Docs/_Inbox/%:r.docx<CR>
 
 
