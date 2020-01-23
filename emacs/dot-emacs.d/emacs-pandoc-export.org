@@ -12,7 +12,7 @@
 
     (use-package ox-pandoc
       :after org-plus-contrib
-      :demand t)
+      :ensure t)
   #+END_SRC
   
 
