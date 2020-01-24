@@ -1,4 +1,5 @@
 vim/dot-vim/pack/minpac
+vim/dot-vim/.netrwhist
 neovim/dot-config/configstore/
 
 emacs/dot-emacs.d/generated-elisp
@@ -6,4 +7,5 @@ emacs/dot-emacs.d/autosaves
 emacs/dot-emacs.d/auto-save-list
 emacs/dot-emacs.d/private.el
 emacs/dot-emacs.d/elpa
+emacs/dot-emacs.d/bookmarks
 
