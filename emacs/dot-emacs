@@ -1,6 +1,0 @@
-;; Load our Literate Programming version of our Dot Emacs
-;; file, from file: ~/Work/dot-files/emacs.org
-(unless (boundp 'aquamacs-version)
-   (load-file "~/.emacs.d/generated-elisp/init-main.el")
-   (server-start))
-
