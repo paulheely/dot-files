@@ -178,6 +178,14 @@
        :config
          (exec-path-from-shell-initialize))
    #+END_SRC
+** Direc Mode
+   #+BEGIN_SRC elisp
+   (use-package dired
+     :config
+       (setq dired-use-ls-dired t
+             insert-directory-program "/usr/local/bin/gls"
+             dired-listing-switches "-ahlt"))
+   #+END_SRC
 * File Editing
 ** Yaml
    #+BEGIN_SRC elisp
@@ -192,6 +200,11 @@
 ** Python
    #+BEGIN_SRC elisp
      (require 'init-python)
+   #+END_SRC
+
+** Org Mode
+   #+BEGIN_SRC elisp
+     (require 'init-org)
    #+END_SRC
 
 * File Conversion
