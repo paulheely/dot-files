@@ -16,7 +16,8 @@
     (global-set-key "\C-cc" 'org-capture)
     (global-set-key "\C-cg" (lambda () (interactive) (find-file "~/git/gtd/gtd.org")))
     (global-set-key "\C-ci" (lambda () (interactive) (find-file "~/git/gtd/inbox.org")))
-   
+    (global-set-key "\C-ce" (lambda () (interactive) (find-file "~/.emacs.d/emacs.org")))
+
     (setq org-agenda-files '("~/git/gtd/inbox.org"
                              "~/git/gtd/gtd.org"
                              "~/git/gtd/tickler.org"))
