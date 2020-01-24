@@ -1,9 +1,4 @@
 #!/bin/bash
-
-# pull in any submodules
-git submodule init
-git submodule update
-
 # Run stow to setup dot-files and scripts
 stow --dotfiles -v -R -t ~ bash
 stow --dotfiles -v -R -t ~ bin

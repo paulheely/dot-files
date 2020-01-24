@@ -50,6 +50,9 @@ set tabstop=2
 set expandtab
 set termguicolors
 
+" configure async update for signify
+set updatetime=100
+
 
 syntax enable
 set background=dark
