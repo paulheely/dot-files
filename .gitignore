@@ -8,4 +8,6 @@ emacs/dot-emacs.d/auto-save-list
 emacs/dot-emacs.d/private.el
 emacs/dot-emacs.d/elpa
 emacs/dot-emacs.d/bookmarks
+emacs/dot-emacs.d/transient
+
 
