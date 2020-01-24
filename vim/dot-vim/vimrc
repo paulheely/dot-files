@@ -1,3 +1,4 @@
+" Paul Heely
 set nocompatible
 
 filetype off
@@ -23,8 +24,8 @@ call minpac#add('mhinz/vim-signify')
 " reformatting is a good thing
 call minpac#add('prettier/vim-prettier')
 
-" color scheme
-call minpac#add('caksoylar/vim-mysticaltutor')
+" color schemes
+call minpac#add('morhetz/gruvbox')
 
 " get some automated bullet (re)numbering in various modes
 call minpac#add('dkarter/bullets.vim')
@@ -33,9 +34,14 @@ call minpac#add('dkarter/bullets.vim')
 " minpac commands
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
+command! PackStatus call minpac#status()
 
-" fzf mappings
+
+" launch fzf fuzzy serach
 nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <leader>ev :vsp ~/.vim/vimrc<CR>
+
+
 
 
 
@@ -44,14 +50,11 @@ set tabstop=2
 set expandtab
 set termguicolors
 
-syntax on
+
+syntax enable
+set background=dark
+colorscheme gruvbox
 filetype plugin indent on
-set termguicolors
-colorscheme mysticaltutor
-hi Normal ctermbg=none
-hi Terminal ctermbg=none
-hi Terminal guibg=none
-hi Normal guibg=none
 
 
 
