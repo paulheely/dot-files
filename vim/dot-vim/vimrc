@@ -21,8 +21,11 @@ call minpac#add('vim-airline/vim-airline')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('mhinz/vim-signify')
 
+" format and lint files
+call minpac#add('dense-analysis/ale')
+
 " reformatting is a good thing
-call minpac#add('prettier/vim-prettier')
+" call minpac#add('prettier/vim-prettier')
 
 " color schemes
 call minpac#add('morhetz/gruvbox')
@@ -37,10 +40,28 @@ command! PackClean call minpac#clean()
 command! PackStatus call minpac#status()
 
 
+" ALE config
+"let g:ale_fixers = {
+"\   'markdown': ['prettier'],
+"\}
+
+let g:ale_fix_on_save = 1
+
+
 " launch fzf fuzzy serach
 nnoremap <C-p> :<C-u>FZF<CR>
-nnoremap <leader>ev :vsp ~/.vim/vimrc<CR>
 
+" make it easy to edit and source my vim config
+" use the acttual path to the file instead of $MYVIMRC
+" because I'm using the same config for both Vim and NeoVim
+nnoremap <leader>ev :vsplit ~/.vim/vimrc<CR>
+nnoremap <leader>sv :source ~/.vim/vimrc<CR>
+
+" some shortcuts for files I often want to visit
+nnoremap <leader>et :e $DRAFTS_DIR/todo.txt<CR>
+
+" disalbe highlight when <leader><CR> is pressed
+map <silent> <leader><CR> :noh<CR>
 
 
 
@@ -61,9 +82,11 @@ filetype plugin indent on
 
 
 
-" Compile the markdown file to a word doc
-" tried putting this in after/ftplugin/markdown.vim, but neovim won't load it
-" reliably
-autocmd FileType markdown nnoremap <buffer><silent><localleader>b :!pandoc % -o ~/Documents/Docs/_Inbox/%:r.docx<CR>
+" pandoc conversion to different formats
+nnoremap <leader>pd :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.docx<CR>
+nnoremap <leader>pp :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.pdf<CR>
+nnoremap <leader>ph :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.html<CR>
 
+"pring a nice startup message
+echo ">^.^<"
 
