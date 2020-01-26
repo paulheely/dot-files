@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit doom-themes markdown-mode yaml-mode exec-path-from-shell use-package))))
+    (gruvbox-theme magit doom-themes markdown-mode yaml-mode exec-path-from-shell use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -121,7 +121,11 @@
 
 * Visual
   Put some interesting stuff here....
-  #+BEGIN_SRC emacs-lisp :tangle no
+  #+BEGIN_SRC emacs-lisp
+    (use-package gruvbox-theme
+     :ensure t)
+
+    (load-theme 'gruvbox t)
   #+END_SRC
 
 * General Settings
