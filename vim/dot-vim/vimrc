@@ -1,8 +1,6 @@
 " Paul Heely
 set nocompatible
 
-filetype off
-
 " Use minpac for package management
 packadd minpac
 call minpac#init()
@@ -24,9 +22,6 @@ call minpac#add('mhinz/vim-signify')
 " format and lint files
 call minpac#add('dense-analysis/ale')
 
-" reformatting is a good thing
-" call minpac#add('prettier/vim-prettier')
-
 " color schemes
 call minpac#add('morhetz/gruvbox')
 
@@ -41,10 +36,7 @@ command! PackStatus call minpac#status()
 
 
 " ALE config
-"let g:ale_fixers = {
-"\   'markdown': ['prettier'],
-"\}
-
+" see the associated ftplugin folders for program associations
 let g:ale_fix_on_save = 1
 
 
@@ -58,7 +50,8 @@ nnoremap <leader>ev :vsplit ~/.vim/vimrc<CR>
 nnoremap <leader>sv :source ~/.vim/vimrc<CR>
 
 " some shortcuts for files I often want to visit
-nnoremap <leader>et :e $DRAFTS_DIR/todo.txt<CR>
+nnoremap <leader>et :vsplit $DRAFTS_DIR/todo.txt<CR>
+
 
 " disalbe highlight when <leader><CR> is pressed
 map <silent> <leader><CR> :noh<CR>
@@ -87,6 +80,6 @@ nnoremap <leader>pd :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.docx<CR>
 nnoremap <leader>pp :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.pdf<CR>
 nnoremap <leader>ph :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.html<CR>
 
-"pring a nice startup message
+" print a nice startup message
 echo ">^.^<"
 
