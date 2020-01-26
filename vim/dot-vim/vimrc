@@ -1,6 +1,8 @@
 " Paul Heely
 set nocompatible
 
+let g:pmh#drafts_dir=$DRAFTS_DIR
+
 " Use minpac for package management
 packadd minpac
 call minpac#init()
@@ -73,7 +75,17 @@ set background=dark
 colorscheme gruvbox
 filetype plugin indent on
 
+" I want to be able to open today's daily jornal file. The date in the
+" filename must be generated everytime in case my session has been open
+" overnight
+function! OpenDailyJournal()
+        let l:yymmdd=strftime('%y%m%d')
+        let l:dj=g:pmh#drafts_dir . "/" . yymmdd . "-Daily_Journal.md"
+        execute "split" l:dj
+endfunction
 
+" and map it to a convenitent key combo
+nnoremap <leader>ed :call OpenDailyJournal()<CR>
 
 " pandoc conversion to different formats
 nnoremap <leader>pd :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.docx<CR>
