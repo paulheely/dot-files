@@ -1,5 +1,6 @@
 export FIGNORE="$FIGNORE:DS_Store"
 export VISUAL=nvim
+export EDITOR=nvim
 
 # Modify the default options on common commands
 alias ls="ls -F"
@@ -21,6 +22,7 @@ export DRAFTS_DIR=~/Documents/Docs/_Archive/${CURRENT_YEAR}/_Drafts
 alias cda="cd ~/Documents/Docs/_Archive/${CURRENT_YEAR}"
 alias cdd="cd $DRAFTS_DIR"
 alias vsome="vim ~/Documents/Docs/_Archive/${CURRENT_YEAR}/_Drafts/_Someday\ Maybe.md"
+alias openi="open ~/Documents/Docs/_Inbox"
 
 
 # Make iTerm display the current directory in the tab name.
@@ -32,3 +34,4 @@ if [ -z $PROMPT_COMMAND_SET ] && [ $ITERM_SESSION_ID ]; then
 fi
 
 
+export PATH="/Users/pheely/.ebcli-virtual-env/executables:$PATH"

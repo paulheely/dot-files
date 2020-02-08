@@ -1,4 +1,4 @@
-#+TITLE: Emacs configuration file
+#Emacs: +Title configuration file
 #+AUTHOR: Paul Heely
 #+BABEL: :cache yes
 #+LATEX_HEADER: \usepackage{parskip}
@@ -122,13 +122,14 @@
 * Visual
   Put some interesting stuff here....
   #+BEGIN_SRC emacs-lisp
-    (use-package gruvbox-theme
-     :ensure t)
-
-    (load-theme 'gruvbox t)
   #+END_SRC
 
 * General Settings
+** Alarm Bells
+   #+BEGIN_SRC emacs-lisp
+     (setq ring-bell-function 'ignore)
+   #+END_SRC
+
 ** Autosaves & Backup Files
    To reduce noise, put autosaves and backups into a single directory
    #+BEGIN_SRC emacs-lisp
@@ -233,7 +234,7 @@
      :config
        (setq dired-use-ls-dired t
              insert-directory-program "/usr/local/bin/gls"
-             dired-listing-switches "-ahlt"))
+             dired-listing-switches "-ahlr"))
    #+END_SRC
 
 ** E-mail address 

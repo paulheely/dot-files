@@ -1,0 +1,11 @@
+#!/bin/bash
+pushd .
+source ~/.bash_profile
+cd $DRAFTS_DIR
+echo $PWD > /tmp/commit_and_push_drafts.log 2>&1
+echo $PATH >> /tmp/commit_and_push_drafts.log 2>&1
+git add . >> /tmp/commit_and_push_drafts.log 2>&1
+git commit -am "Automated hourly commit" >> /tmp/commit_and_push_drafts.log 2>&1
+git push >> /tmp/commit_and_push_drafts.log 2>&1
+popd 
+

@@ -65,6 +65,8 @@ set number
 set tabstop=2
 set expandtab
 set termguicolors
+set textwidth=80
+set wrap
 
 " configure async update for signify
 set updatetime=100
