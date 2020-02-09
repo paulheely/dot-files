@@ -58,6 +58,8 @@ nnoremap <leader>et :vsplit $DRAFTS_DIR/todo.txt<CR>
 " disalbe highlight when <leader><CR> is pressed
 map <silent> <leader><CR> :noh<CR>
 
+" toggle screen centering on and off
+nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 
 
 

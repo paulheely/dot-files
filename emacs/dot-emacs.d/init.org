@@ -1,4 +1,4 @@
-#Emacs: +Title configuration file
+#+TITLE: Emacs configuration file
 #+AUTHOR: Paul Heely
 #+BABEL: :cache yes
 #+LATEX_HEADER: \usepackage{parskip}
