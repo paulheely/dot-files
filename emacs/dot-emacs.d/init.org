@@ -122,6 +122,10 @@
 * Visual
   Put some interesting stuff here....
   #+BEGIN_SRC emacs-lisp
+    (use-package leuven-theme
+     :ensure t
+     :config
+     (load-theme 'leuven t))
   #+END_SRC
 
 * General Settings
@@ -338,4 +342,13 @@
    (use-package magit
      :ensure t
      :bind (("C-x g" . magit-status)))
-   #+END_S
+   #+END_SRC
+* Code Snippets
+** Reformat Buffer
+   #+BEGIN_SRC emacs-lisp
+     (defun pmh/indent-buffer ()
+       (interactive)
+       (save-excursion
+         (indent-region (point-min) (point-max) nil)))
+     ;; (global-set-key [f12] 'indent-buffer)
+   #+END_SRC
