@@ -30,7 +30,6 @@ call minpac#add('morhetz/gruvbox')
 " get some automated bullet (re)numbering in various modes
 call minpac#add('dkarter/bullets.vim')
 
-
 " minpac commands
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
@@ -65,6 +64,7 @@ nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 
 set number
 set tabstop=2
+set shiftwidth=2
 set expandtab
 set termguicolors
 set textwidth=80
@@ -93,7 +93,7 @@ nnoremap <leader>ed :call OpenDailyJournal()<CR>
 
 " pandoc conversion to different formats
 nnoremap <leader>pd :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.docx<CR>
-nnoremap <leader>pp :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.pdf<CR>
+nnoremap <leader>pp :!pandoc % -V geometry:margin=1in -o ~/Documents/Docs/_Inbox/%:t:r.pdf<CR>
 nnoremap <leader>ph :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.html<CR>
 
 " print a nice startup message
