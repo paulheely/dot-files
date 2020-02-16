@@ -4,3 +4,6 @@
 name = Paul Heely
 email = pheely@amazon.com
 
+[credential]
+	helper = !aws --profile dev-assoc codecommit credential-helper $@
+	UserHttpPath = true

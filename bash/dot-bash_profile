@@ -11,7 +11,7 @@ alias vim=nvim
 alias vi=nvim
 
 # Make FZF in (N)Vim use ripgrep -- brew install ripgrep
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND='rg --files --sortr path'
 
 
 # Some convenient aliases for quickly getting to my stuff

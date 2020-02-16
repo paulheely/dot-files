@@ -250,6 +250,12 @@
     (setq user-mail-address "paul@paulheely.com"))
   #+END_SRC
 
+** Fill Mode
+   #+BEGIN_SRC emacs-lisp
+     (setq-default fill-column 80)
+     (add-hook 'text-mode-hook 'turn-on-auto-fill)
+   #+END_SRC
+
 * Global Shortcuts
   #+BEGIN_SRC emacs-lisp
     (global-set-key "\C-cg" (lambda () (interactive) (find-file "~/git/gtd/gtd.org")))
@@ -343,6 +349,7 @@
      :ensure t
      :bind (("C-x g" . magit-status)))
    #+END_SRC
+
 * Code Snippets
 ** Reformat Buffer
    #+BEGIN_SRC emacs-lisp
