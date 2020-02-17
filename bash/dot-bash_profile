@@ -35,3 +35,7 @@ fi
 
 
 export PATH="/Users/pheely/.ebcli-virtual-env/executables:$PATH"
+
+# print a nice logo and some info
+archey -c
+
