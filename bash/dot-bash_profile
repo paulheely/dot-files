@@ -34,7 +34,7 @@ if [ -z $PROMPT_COMMAND_SET ] && [ $ITERM_SESSION_ID ]; then
 fi
 
 
-export PATH="/Users/pheely/.ebcli-virtual-env/executables:$PATH"
+export PATH=/Users/pheely/.ebcli-virtual-env/executables:$PATH
 
 # print a nice logo and some info
 archey -c
