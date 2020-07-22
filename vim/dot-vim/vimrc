@@ -96,6 +96,4 @@ nnoremap <leader>pd :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.docx<CR>
 nnoremap <leader>pp :!pandoc % -V geometry:margin=1in -o ~/Documents/Docs/_Inbox/%:t:r.pdf<CR>
 nnoremap <leader>ph :!pandoc % -o ~/Documents/Docs/_Inbox/%:t:r.html<CR>
 
-" print a nice startup message
-echo ">^.^<"
 
