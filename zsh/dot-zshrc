@@ -1,0 +1,28 @@
+export FIGNORE="$FIGNORE:DS_Store"
+export VISUAL=nvim
+export EDITOR=nvim
+
+# Modify the default options on common commands
+alias ls="ls -F"
+
+
+# Use Neovim instead of vim or vi
+alias vim=nvim
+alias vi=nvim
+
+# Make FZF in (N)Vim use ripgrep -- brew install ripgrep
+export FZF_DEFAULT_COMMAND='rg --files --sortr path'
+
+
+# Some convenient aliases for quickly getting to my stuff
+export CURRENT_YEAR=2021
+export YYMMDD=`date +%y%m%d`
+export INBOX=~/Documents/Docs/Inbox
+export DRAFTS_DIR=~/Documents/Docs/Archive/${CURRENT_YEAR}/_Drafts
+alias cda="cd ~/Documents/Docs/Archive/${CURRENT_YEAR}"
+alias cdd="cd $DRAFTS_DIR"
+
+
+# print a nice logo and some info
+archey -c
+
